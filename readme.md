@@ -13,11 +13,6 @@ Redux is included in a script tag. This has created a global variable `Redux`. T
 * subscribe in componentDidMount
 * dispatch in the event handler
 
-## Customer.js
-* When the Add button is clicked, use the store to dispatch a message `{type:"ADD_CUSTOMER",value: this.state.customer}` and then `{type:"CHANGE_CURRENT_CUSTOMER",value: emptyCustomer}`
-* When the Clear button is clicked, use the store to dispatch a message `{type:"CHANGE_CURRENT_CUSTOMER",value: emptyCustomer}`
-* In componentDidMount, subscribe to the store
-* In the subscribe function retrieve the currentCustomer from the store `let currentCustomer = store.getState().currentCustomer;` and then `setState({customer:currentCustomer})`
 
 ## Customers.js
 * In componentDidMount retrieve the customers from the store `store.getState().customers;` and then setState 
@@ -25,6 +20,13 @@ Redux is included in a script tag. This has created a global variable `Redux`. T
 * In the subscribe function, retrieve 2 pieces of data from the store `store.getState().searchTerm;`  and `store.getState().customers;`
 * `setState for customers and searchTerm`
 * In the `viewCustomer` method, dispatch a message `{type:"CHANGE_CURRENT_CUSTOMER",value: cust}`
+
+## Customer.js
+* When the Add button is clicked, use the store to dispatch a message `{type:"ADD_CUSTOMER",value: this.state.customer}` and then `{type:"CHANGE_CURRENT_CUSTOMER",value: emptyCustomer}`
+* When the Clear button is clicked, use the store to dispatch a message `{type:"CHANGE_CURRENT_CUSTOMER",value: emptyCustomer}`
+* In componentDidMount, subscribe to the store
+* In the subscribe function retrieve the currentCustomer from the store `let currentCustomer = store.getState().currentCustomer;` and then `setState({customer:currentCustomer})`
+
 
 ## SearchBar.js
 * In the onChange of the <input>, dispatch a message `{type:"CHANGE_SEARCH_TERM",value: e.target.value}`
