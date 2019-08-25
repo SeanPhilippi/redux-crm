@@ -3,22 +3,25 @@ class Customers extends React.Component {
     customers: [],
     searchTerm: ""
   }
+
   componentDidMount() {
     store.subscribe(() => {
       let customers = store.getState().customers;
-      let searchTerm = store.getSTate().searchTerm;
+      let searchTerm = store.getState().searchTerm;
       this.setState({
         customers,
         searchTerm
       });
     })
   }
+
   viewCustomer(customer) {
     store.dispatch({
       type: "CHANGE_CURRENT_CUSTOMER",
       value: customer
     });
   }
+
   shouldInclude(customer) {
     if (!this.state.searchTerm)
       return true;
@@ -31,6 +34,7 @@ class Customers extends React.Component {
     }
     return false;
   }
+
   render() {
     let tbody = [];
     for(let i =0; i < this.state.customers.length; i ++){
