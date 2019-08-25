@@ -12,23 +12,23 @@ class Customers extends React.Component {
         customers,
         searchTerm
       });
-    })
-  }
+    });
+  };
 
   viewCustomer(customer) {
     store.dispatch({
       type: "CHANGE_CURRENT_CUSTOMER",
       value: customer
     });
-  }
+  }l
 
   shouldInclude(customer) {
     if (!this.state.searchTerm)
       return true;
     if (
-      customer.firstName.includes(this.state.searchTerm) ||
-      customer.lastName.includes(this.state.searchTerm) ||
-      customer.email.includes(this.state.searchTerm)
+      customer.firstName.toLowerCase().includes(this.state.searchTerm.toLowerCase()) ||
+      customer.lastName.toLowerCase().includes(this.state.searchTerm.toLowerCase()) ||
+      customer.email.toLowerCase().includes(this.state.searchTerm.toLowerCase())
     ) {
       return true;
     }
@@ -38,17 +38,17 @@ class Customers extends React.Component {
   render() {
     let tbody = [];
     for(let i =0; i < this.state.customers.length; i ++){
-      const cust = this.state.customers[i]
-      if(this.shouldInclude(cust)) {
+      const customer = this.state.customers[i];
+      if(this.shouldInclude(customer)) {
         tbody.push(
           <tr key={i}>
-          <th scope="row">{cust.id}</th>
-          <td>{cust.firstName}</td>
-          <td>{cust.lastName}</td>
-          <td>{cust.email}</td>
+          <th scope="row">{customer.id}</th>
+          <td>{customer.firstName}</td>
+          <td>{customer.lastName}</td>
+          <td>{customer.email}</td>
           <td><a href="#" onClick={
             ()=>{
-              this.viewCustomer(cust);
+              this.viewCustomer(customer);
             }
           }>View</a></td>
           </tr>
