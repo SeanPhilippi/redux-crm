@@ -15,7 +15,7 @@ Redux is included in a script tag. This has created a global variable `Redux`. T
 
 
 ## Customers.js
-* In componentDidMount retrieve the customers from the store `store.getState().customers;` and then setState 
+* In componentDidMount retrieve the customers from the store `store.getState().customers;` and then setState
 * Also, subscribe to the store
 * In the subscribe function, retrieve 2 pieces of data from the store `store.getState().searchTerm;`  and `store.getState().customers;`
 * `setState for customers and searchTerm`
@@ -33,9 +33,10 @@ Redux is included in a script tag. This has created a global variable `Redux`. T
 
 ## Bonus - Update
 * Fix Customer.js so that the button says Update instead of add if the customer has an id value
-* When the Update button is clicked, if the the customer has an id value then dispatch a message `{type:"UPDATE_CUSTOMER",value: this.state.customer}` 
+* When the Update button is clicked, if the the customer has an id value then dispatch a message `{type:"UPDATE_CUSTOMER",value: this.state.customer}`
 * Change the customers reducer so that it has an if statement for `UPDATE_CUSTOMER`
 * Move the code for updating a customer into this if statement.
+
 ## Bonus - Remove
 * Add a button (or x icon) to Customers.js so that a customer can be removed
 * When clicked, dispatch a message `{type:"REMOVE_CUSTOMER",value: cust}`

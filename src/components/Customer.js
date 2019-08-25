@@ -22,54 +22,77 @@ class Customer extends React.Component {
     });
   };
 
+
   render(){
-    return(
+    let addOrUpdate;
+
+    this.state.customer.id ?
+      addOrUpdate = <button
+        onClick={ e => {
+          store.dispatch({
+            type: "UPDATE_CUSTOMER",
+            value: this.state.customer
+          });
+          store.dispatch({
+            type: "CHANGE_CURRENT_CUSTOMER",
+            value: emptyCustomer
+          });
+          this.setState({ customer: emptyCustomer });
+        }}
+        type="button"
+        className="btn btn-primary"
+      >
+        Update
+      </button> :
+      addOrUpdate = <button
+        onClick={ e => {
+          store.dispatch({
+            type: "ADD_CUSTOMER",
+            value: this.state.customer
+          });
+          store.dispatch({
+            type: "CHANGE_CURRENT_CUSTOMER",
+            value: emptyCustomer
+          });
+          this.setState({ customer: emptyCustomer });
+        }}
+        type="button"
+        className="btn btn-primary"
+      >
+        Add
+      </button>
+
+    return (
       <div id="add-customer" className="page">
       <form>
         <div className="form-group">
           <label htmlFor="email-address">Email address</label>
-          <input value={this.state.customer.email} onChange={(e)=>{
-            this.setState({customer: {...this.state.customer,email: e.target.value} })
+          <input value={ this.state.customer.email } onChange={ e => {
+            this.setState({customer: {...this.state.customer, email: e.target.value} })
           }} type="email" className="form-control" id="email-address" placeholder="Enter email"></input>
 
         </div>
         <div className="form-group">
           <label htmlFor="last-name">Last name</label>
-          <input value={this.state.customer.lastName} onChange={(e)=>{
+          <input value={ this.state.customer.lastName } onChange={ e => {
             this.setState({customer: {...this.state.customer,lastName: e.target.value} })
           }} type="text" className="form-control" id="last-name" placeholder="Enter last name"></input>
 
         </div>
         <div className="form-group">
           <label htmlFor="first-name">First name</label>
-          <input value={this.state.customer.firstName} onChange={(e)=>{
+          <input value={ this.state.customer.firstName } onChange={ e => {
             this.setState({customer: {...this.state.customer,firstName: e.target.value} })
           }} type="text" className="form-control" id="first-name"  placeholder="Enter first name"></input>
 
         </div>
         <div className="form-group">
           <label htmlFor="phone">Phone</label>
-          <input value={this.state.customer.phone} onChange={(e)=>{
+          <input value={ this.state.customer.phone } onChange={ e => {
             this.setState({customer: {...this.state.customer,phone: e.target.value} })
           }} type="phone" className="form-control" id="phone" placeholder="Enter phone"></input>
         </div>
-        <button
-          onClick={(e)=>{
-            store.dispatch({
-              type: "ADD_CUSTOMER",
-              value: this.state.customer
-            });
-            store.dispatch({
-              type: "CHANGE_CURRENT_CUSTOMER",
-              value: emptyCustomer
-            });
-            this.setState({ customer: emptyCustomer });
-          }}
-          type="button"
-          className="btn btn-primary"
-        >
-          Add
-        </button>
+        { addOrUpdate }
         <button
           onClick={(e)=>{
             store.dispatch({

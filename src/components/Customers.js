@@ -37,20 +37,27 @@ class Customers extends React.Component {
 
   render() {
     let tbody = [];
-    for(let i =0; i < this.state.customers.length; i ++){
+    for (let i =0; i < this.state.customers.length; i++) {
       const customer = this.state.customers[i];
-      if(this.shouldInclude(customer)) {
+      if (this.shouldInclude(customer)) {
         tbody.push(
           <tr key={i}>
-          <th scope="row">{customer.id}</th>
-          <td>{customer.firstName}</td>
-          <td>{customer.lastName}</td>
-          <td>{customer.email}</td>
-          <td><a href="#" onClick={
-            ()=>{
-              this.viewCustomer(customer);
-            }
-          }>View</a></td>
+            <th scope="row">{customer.id}</th>
+            <td>{customer.firstName}</td>
+            <td>{customer.lastName}</td>
+            <td>{customer.email}</td>
+            <td>
+              <a
+                href="#"
+                onClick={
+                  () => {
+                    this.viewCustomer(customer)
+                  }
+                }
+              >
+                View
+              </a>
+            </td>
           </tr>
         );
       }

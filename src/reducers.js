@@ -2,14 +2,14 @@
 let id = 2;
 function customers(state = [], action) {
   if (action.type === "ADD_CUSTOMER") {
-    if (action.value.id) {
-      const index = state.findIndex((c) => c.id === action.value.id);
-      state[index] = action.value;
-      return [...state];
-    }
     action.value.id = ++id;
     return [...state, action.value];
-  }
+  };
+  if (action.type === "UPDATE_CUSTOMER") {
+    const idx = state.findIndex(customer => customer.id === action.value.id);
+    state[idx] = action.value;
+    return [...state];
+  };
   return state;
 }
 function currentCustomer(state = {}, action) {
