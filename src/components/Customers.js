@@ -58,6 +58,19 @@ class Customers extends React.Component {
                 View
               </a>
             </td>
+            <td>
+              <button
+                className="ml-3"
+                onClick={ () =>
+                  store.dispatch({
+                    type: "REMOVE_CUSTOMER",
+                    value: customer
+                  })
+                }
+              >
+                x
+              </button>
+            </td>
           </tr>
         );
       }
@@ -72,6 +85,7 @@ class Customers extends React.Component {
             <th scope="col">Last</th>
             <th scope="col">Email</th>
             <th scope="col">Actions</th>
+            <th scope="col">Delete</th>
           </tr>
           </thead>
           <tbody id="search-customer-tbody">

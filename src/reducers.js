@@ -10,6 +10,9 @@ function customers(state = [], action) {
     state[idx] = action.value;
     return [...state];
   };
+  if (action.type === "REMOVE_CUSTOMER") {
+    return [...state.filter(customer => customer.id !== action.value.id)];
+  };
   return state;
 }
 function currentCustomer(state = {}, action) {
