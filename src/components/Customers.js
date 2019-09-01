@@ -26,9 +26,21 @@ class Customers extends React.Component {
     if (!this.state.searchTerm)
       return true;
     if (
-      customer.firstName.toLowerCase().includes(this.state.searchTerm.toLowerCase()) ||
-      customer.lastName.toLowerCase().includes(this.state.searchTerm.toLowerCase()) ||
-      customer.email.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+      customer.firstName
+        .toLowerCase()
+        .includes(
+          this.state.searchTerm.toLowerCase()
+        ) ||
+      customer.lastName
+        .toLowerCase()
+        .includes(
+          this.state.searchTerm.toLowerCase()
+        ) ||
+      customer.email
+        .toLowerCase()
+        .includes(
+          this.state.searchTerm.toLowerCase()
+        )
     ) {
       return true;
     }
@@ -42,10 +54,18 @@ class Customers extends React.Component {
       if (this.shouldInclude(customer)) {
         tbody.push(
           <tr key={i}>
-            <th scope="row">{customer.id}</th>
-            <td>{customer.firstName}</td>
-            <td>{customer.lastName}</td>
-            <td>{customer.email}</td>
+            <th scope="row">
+              {customer.id}
+            </th>
+            <td>
+              {customer.firstName}
+            </td>
+            <td>
+              {customer.lastName}
+            </td>
+            <td>
+              {customer.email}
+            </td>
             <td>
               <a
                 href="#"
@@ -80,16 +100,28 @@ class Customers extends React.Component {
         <table className="table">
           <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Email</th>
-            <th scope="col">Actions</th>
-            <th scope="col">Delete</th>
+            <th scope="col">
+              #
+            </th>
+            <th scope="col">
+              First
+            </th>
+            <th scope="col">
+              Last
+            </th>
+            <th scope="col">
+              Email
+            </th>
+            <th scope="col">
+              Actions
+            </th>
+            <th scope="col">
+              Delete
+            </th>
           </tr>
           </thead>
           <tbody id="search-customer-tbody">
-          {tbody}
+            {tbody}
           </tbody>
         </table>
       </div>
